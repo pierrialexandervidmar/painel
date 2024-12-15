@@ -16,8 +16,9 @@ Projeto `Laravel Sail` com uso do painel administrativo do `Filament PHP`.
 ## Pré-requisitos
 
 Antes de começar, verifique se você possui o Docker e o Docker Compose instalados em sua máquina.
+Se caso utilizar o Windows, recomendamos que use o WSL2.
 
-Ajuste as variáveis de ambiente para simplificar seus comandos Sail do Laravel.
+Se usar uma distro Linux ou WSL2, é aconselhável que atualize as variáveis de ambiente para simplificar seus comandos Sail do Laravel.
 
 Acesse o Bash:
 ```bash
