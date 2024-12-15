@@ -17,6 +17,22 @@ Projeto `Laravel Sail` com uso do painel administrativo do `Filament PHP`.
 
 Antes de começar, verifique se você possui o Docker e o Docker Compose instalados em sua máquina.
 
+Ajuste as variáveis de ambiente para simplificar seus comandos Sail do Laravel.
+
+Acesse o Bash:
+```bash
+nano ~/.bashrc
+```
+Insira a linha ao final do documento
+```bash
+alias sail='[ -f sail ] && bash sail || ./vendor/bin/sail'
+```
+`Ctrl + O` para salvar e `Ctrl + x` para sair.
+Execute no terminal para finalizar:
+```bash
+source ~/.bashrc
+```
+
 ## Como Baixar o Projeto
 
 Para baixar o projeto, utilize o comando git clone
