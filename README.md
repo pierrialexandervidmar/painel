@@ -1,4 +1,4 @@
-# Blog com Laravel e Filament
+# Blog Laravel e painel administrativo Filament
 
 Projeto `Laravel Sail` com uso do painel administrativo do `Filament PHP`.
 
