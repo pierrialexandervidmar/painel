@@ -22,7 +22,7 @@ Antes de começar, verifique se você possui o Docker e o Docker Compose instala
 Para baixar o projeto, utilize o comando git clone
 
 ```bash
-git clone git@github.com:pierrialexandervidmar/sistema_agenda.git
+git clone git@github.com:pierrialexandervidmar/painel.git
 cd sistema_agenda
 ```
 
