@@ -1,16 +1,18 @@
 # Blog Laravel e painel administrativo Filament
 
-Projeto `Laravel Sail` com uso do painel administrativo do `Filament PHP`.
+Projeto `Laravel Sail` de um painel administrativo desenvolvido com a fantástica ferramenta de administração `Filament PHP`.
 
 ## Tecnologias Utilizadas
 
 - PHP 8.4
+- Laravel 11
+- Filament PHP v3
+- Livewire
 - Eloquent ORM
 - Composer
 - Docker & Docker Compose
 - PostgreSQL
 - PgAdmin
-- Livewire
 - Tailwind CSS
 
 ## Pré-requisitos

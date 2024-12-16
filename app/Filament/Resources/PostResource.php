@@ -59,7 +59,7 @@ class PostResource extends Resource
                 TextColumn::make('slug')->limit('50'),
                 BooleanColumn::make('is_published'),
                 SpatieMediaLibraryImageColumn::make('thumbnail')->collection('posts'),
-                //TextColumn::make('category.name')->label('Categoria')->sortable(),
+                TextColumn::make('category.name')->label('Categoria')->sortable(),
             ])
             ->filters([
                 //
