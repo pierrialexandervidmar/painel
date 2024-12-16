@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * Class Post
@@ -12,8 +15,15 @@ use Illuminate\Database\Eloquent\Model;
  * @author Pierri Alexander Vidmar
  * @since 2024-12-01
  */
-class Post extends Model
+class Post extends Model implements HasMedia
 {
+    
+    use HasFactory, InteractsWithMedia;
+    
+    protected $casts = [
+        'is_published' => 'boolean',
+    ];
+
     /**
      * Os atributos que podem ser atribuídos em massa.
      *
