@@ -1,0 +1,9 @@
+/* Custom CSS para reduzir a largura da sidebar */
+.fi-sidebar {
+  width: 200px; /* Defina a largura desejada */
+  min-width: 200px; /* Largura mínima para evitar que expanda */
+}
+
+.fi-main {
+  margin-left: 200px; /* Ajusta o conteúdo principal para alinhar */
+}

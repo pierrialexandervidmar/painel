@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
+    
+    protected static ?string $label = 'Categoria';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -33,7 +35,7 @@ class CategoryResource extends Resource
                 Section::make('Cadastro de Categoria')
                 ->description('Faça o cadastro de sua categoria')
                 ->schema([
-                    TextInput::make('name')->live(onBlur: true)
+                    TextInput::make('name')->live(onBlur: true)->label('Nome')
                     ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                     ->required(),
                 TextInput::make('slug')->required(),
@@ -46,7 +48,7 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->sortable(),
-                TextColumn::make('name')->limit('100')->sortable(),
+                TextColumn::make('name')->limit('100')->sortable()->searchable()->label('Nome'),
                 TextColumn::make('slug')->limit('100')
             ])
             ->filters([

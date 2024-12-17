@@ -21,6 +21,7 @@ use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Illuminate\Support\Str;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -29,6 +30,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
+    
+    protected static ?string $label = 'Postagens';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -57,14 +60,17 @@ class PostResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->sortable(),
-                TextColumn::make('title')->limit('100')->sortable(),
+                TextColumn::make('title')->limit('100')->sortable()->searchable()->label('Título'),
                 TextColumn::make('slug')->limit('50'),
-                BooleanColumn::make('is_published'),
+                BooleanColumn::make('is_published')->label('Publicada'),
                 SpatieMediaLibraryImageColumn::make('thumbnail')->collection('posts'),
                 TextColumn::make('category.name')->label('Categoria')->sortable(),
             ])
             ->filters([
-                //
+                Filter::make('Publicadas')
+                    ->query(fn(Builder $query): Builder => $query->where('is_published', true)),
+                Filter::make('Não Publicadas')
+                    ->query(fn(Builder $query): Builder => $query->where('is_published', false))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
