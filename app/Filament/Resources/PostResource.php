@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Filament\Resources\PostResource\RelationManagers\TagsRelationManager;
+use App\Filament\Resources\PostResource\Widgets\StatsOverview;
 use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
@@ -22,6 +23,7 @@ use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Support\Str;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -30,6 +32,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
+
+    protected static ?string $recordTitleAttribute = 'title';
     
     protected static ?string $label = 'Postagens';
 
@@ -70,7 +74,8 @@ class PostResource extends Resource
                 Filter::make('Publicadas')
                     ->query(fn(Builder $query): Builder => $query->where('is_published', true)),
                 Filter::make('Não Publicadas')
-                    ->query(fn(Builder $query): Builder => $query->where('is_published', false))
+                    ->query(fn(Builder $query): Builder => $query->where('is_published', false)),
+                SelectFilter::make('Categoria')->relationship('category', 'name')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -86,6 +91,13 @@ class PostResource extends Resource
     {
         return [
             TagsRelationManager::class
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            StatsOverview::class
         ];
     }
 
